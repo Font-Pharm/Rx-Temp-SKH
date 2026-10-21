@@ -8,8 +8,11 @@
     <meta name="theme-color" content="#0d9488">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="บันทึกอุณหภูมิ">
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/L4rtZ7Sp/tra-rph-s-khrph-m.png">
-    <link rel="apple-touch-icon" href="https://i.postimg.cc/L4rtZ7Sp/tra-rph-s-khrph-m.png">
+    <!-- ไอคอนและ manifest อยู่ใน repository เดียวกัน (Android ต้องการเพื่อให้ติดตั้งเป็นแอปได้) -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <style>
         :root { --bar: 40px; --teal: #0d9488; --ink: #334155; --muted: #64748b; --bg: #f8fafc; }
         * { box-sizing: border-box; }
@@ -69,7 +72,7 @@
 
     <script>
         // ===== แก้บรรทัดนี้: ลิงก์ Web App จาก Apps Script (Deploy → Manage deployments → คัดลอก URL ที่ลงท้ายด้วย /exec) =====
-        const APP_URL = 'https://script.google.com/macros/s/AKfycbyw9hQ4qX3-KTIfbRMAu4f9nJHwQ87vbj_qb9UfXyOAMoNgcHE1gjn6t6KORHy3N34G/exec';
+        const APP_URL = 'https://script.google.com/macros/s/วาง_DEPLOYMENT_ID_ตรงนี้/exec';
 
         (function () {
             const frame = document.getElementById('app');
@@ -91,6 +94,11 @@
             frame.addEventListener('load', () => { clearTimeout(slow); loading.hidden = true; });
             frame.src = APP_URL;
         })();
+
+        // ลงทะเบียน service worker (จำเป็นสำหรับการติดตั้งเป็นแอปบน Android)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+        }
     </script>
 </body>
 </html>
