@@ -38,7 +38,8 @@
         .toast { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 1200; width: calc(100% - 32px); max-width: 480px; }
 
         .chart-container { background: #fff; border-radius: 16px; padding: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; display: flex; flex-direction: column; }
-        .chart-canvas-wrap { position: relative; height: 270px; }
+        .chart-canvas-wrap { position: relative; height: 290px; }
+        .chart-canvas-wrap.half { height: 250px; }
 
         .hospital-logo { width: 85px; height: 85px; object-fit: contain; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin: 0 auto 10px auto; background-color: white; border: 2px solid #0d9488; }
 
@@ -115,7 +116,7 @@
     <style id="tailwind">
         /* Tailwind CSS v3 สร้างล่วงหน้าจากไฟล์นี้ (แทน cdn.tailwindcss.com)
            ถ้าเพิ่ม class ของ Tailwind ใหม่ ต้องสร้างส่วนนี้ใหม่ ดู README */
-*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.visible{visibility:visible}.collapse{visibility:collapse}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.right-3{right:.75rem}.top-2{top:.5rem}.z-10{z-index:10}.mx-auto{margin-left:auto;margin-right:auto}.my-4{margin-top:1rem;margin-bottom:1rem}.-mt-2{margin-top:-.5rem}.mb-1{margin-bottom:.25rem}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.grid{display:grid}.hidden{display:none}.h-14{height:3.5rem}.w-14{width:3.5rem}.w-full{width:100%}.min-w-\[150px\]{min-width:150px}.max-w-7xl{max-width:80rem}.max-w-md{max-width:28rem}.max-w-xl{max-width:36rem}.flex-1{flex:1 1 0%}.border-collapse{border-collapse:collapse}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes spin{to{transform:rotate(1turn)}}.animate-spin{animation:spin 1s linear infinite}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.resize{resize:both}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-wrap{flex-wrap:wrap}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-x-3{-moz-column-gap:.75rem;column-gap:.75rem}.gap-x-6{-moz-column-gap:1.5rem;column-gap:1.5rem}.gap-y-1{row-gap:.25rem}.gap-y-2{row-gap:.5rem}.space-y-5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem*var(--tw-space-y-reverse))}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-4{border-width:4px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-b-4{border-bottom-width:4px}.border-l-4{border-left-width:4px}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138/var(--tw-border-opacity,1))}.border-amber-300{--tw-border-opacity:1;border-color:rgb(252 211 77/var(--tw-border-opacity,1))}.border-blue-100{--tw-border-opacity:1;border-color:rgb(219 234 254/var(--tw-border-opacity,1))}.border-blue-500{--tw-border-opacity:1;border-color:rgb(59 130 246/var(--tw-border-opacity,1))}.border-emerald-300{--tw-border-opacity:1;border-color:rgb(110 231 183/var(--tw-border-opacity,1))}.border-red-200{--tw-border-opacity:1;border-color:rgb(254 202 202/var(--tw-border-opacity,1))}.border-red-300{--tw-border-opacity:1;border-color:rgb(252 165 165/var(--tw-border-opacity,1))}.border-red-500{--tw-border-opacity:1;border-color:rgb(239 68 68/var(--tw-border-opacity,1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249/var(--tw-border-opacity,1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240/var(--tw-border-opacity,1))}.border-slate-200\/80{border-color:rgba(226,232,240,.8)}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225/var(--tw-border-opacity,1))}.border-teal-100{--tw-border-opacity:1;border-color:rgb(204 251 241/var(--tw-border-opacity,1))}.border-teal-500{--tw-border-opacity:1;border-color:rgb(20 184 166/var(--tw-border-opacity,1))}.border-transparent{border-color:transparent}.border-t-teal-600{--tw-border-opacity:1;border-top-color:rgb(13 148 136/var(--tw-border-opacity,1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235/var(--tw-bg-opacity,1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235/var(--tw-bg-opacity,1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245/var(--tw-bg-opacity,1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229/var(--tw-bg-opacity,1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242/var(--tw-bg-opacity,1))}.bg-red-600{--tw-bg-opacity:1;background-color:rgb(220 38 38/var(--tw-bg-opacity,1))}.bg-rose-600{--tw-bg-opacity:1;background-color:rgb(225 29 72/var(--tw-bg-opacity,1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252/var(--tw-bg-opacity,1))}.bg-teal-600{--tw-bg-opacity:1;background-color:rgb(13 148 136/var(--tw-bg-opacity,1))}.bg-transparent{background-color:transparent}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.p-1{padding:.25rem}.p-1\.5{padding:.375rem}.p-2{padding:.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-2{padding-bottom:.5rem}.pr-10{padding-right:2.5rem}.pt-0{padding-top:0}.pt-4{padding-top:1rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.italic{font-style:italic}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6/var(--tw-text-opacity,1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9/var(--tw-text-opacity,1))}.text-amber-800{--tw-text-opacity:1;color:rgb(146 64 14/var(--tw-text-opacity,1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}.text-blue-700{--tw-text-opacity:1;color:rgb(29 78 216/var(--tw-text-opacity,1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105/var(--tw-text-opacity,1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70/var(--tw-text-opacity,1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38/var(--tw-text-opacity,1))}.text-red-700{--tw-text-opacity:1;color:rgb(185 28 28/var(--tw-text-opacity,1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27/var(--tw-text-opacity,1))}.text-rose-600{--tw-text-opacity:1;color:rgb(225 29 72/var(--tw-text-opacity,1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184/var(--tw-text-opacity,1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139/var(--tw-text-opacity,1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105/var(--tw-text-opacity,1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85/var(--tw-text-opacity,1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59/var(--tw-text-opacity,1))}.text-teal-700{--tw-text-opacity:1;color:rgb(15 118 110/var(--tw-text-opacity,1))}.text-teal-900{--tw-text-opacity:1;color:rgb(19 78 74/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-60{opacity:.6}.shadow-\[0_4px_14px_rgba\(13\2c 148\2c 136\2c 0\.4\)\]{--tw-shadow:0 4px 14px rgba(13,148,136,.4);--tw-shadow-colored:0 4px 14px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-\[0_4px_14px_rgba\(37\2c 99\2c 235\2c 0\.4\)\]{--tw-shadow:0 4px 14px rgba(37,99,235,.4);--tw-shadow-colored:0 4px 14px var(--tw-shadow-color)}.shadow-\[0_4px_14px_rgba\(37\2c 99\2c 235\2c 0\.4\)\],.shadow-inner{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgba(0,0,0,.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-lg,.shadow-md{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.shadow-sm,.shadow-xl{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color)}.outline{outline-style:solid}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-200{transition-duration:.2s}.duration-300{transition-duration:.3s}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216/var(--tw-bg-opacity,1))}.hover\:bg-indigo-700:hover{--tw-bg-opacity:1;background-color:rgb(67 56 202/var(--tw-bg-opacity,1))}.hover\:bg-red-700:hover{--tw-bg-opacity:1;background-color:rgb(185 28 28/var(--tw-bg-opacity,1))}.hover\:bg-rose-700:hover{--tw-bg-opacity:1;background-color:rgb(190 18 60/var(--tw-bg-opacity,1))}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.hover\:bg-slate-200\/50:hover{background-color:rgba(226,232,240,.5)}.hover\:bg-slate-300:hover{--tw-bg-opacity:1;background-color:rgb(203 213 225/var(--tw-bg-opacity,1))}.hover\:bg-slate-50:hover{--tw-bg-opacity:1;background-color:rgb(248 250 252/var(--tw-bg-opacity,1))}.hover\:bg-teal-700:hover{--tw-bg-opacity:1;background-color:rgb(15 118 110/var(--tw-bg-opacity,1))}.hover\:text-slate-700:hover{--tw-text-opacity:1;color:rgb(51 65 85/var(--tw-text-opacity,1))}.hover\:opacity-100:hover{opacity:1}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.disabled\:opacity-50:disabled{opacity:.5}@media (min-width:640px){.sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\:py-4{padding-top:1rem;padding-bottom:1rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}}@media (min-width:768px){.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\:p-6{padding:1.5rem}.md\:p-8{padding:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-base{font-size:1rem;line-height:1.5rem}}@media (min-width:1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.visible{visibility:visible}.collapse{visibility:collapse}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.right-3{right:.75rem}.top-2{top:.5rem}.z-10{z-index:10}.mx-auto{margin-left:auto;margin-right:auto}.my-4{margin-top:1rem;margin-bottom:1rem}.-mt-2{margin-top:-.5rem}.mb-1{margin-bottom:.25rem}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.grid{display:grid}.hidden{display:none}.h-14{height:3.5rem}.w-14{width:3.5rem}.w-full{width:100%}.min-w-\[150px\]{min-width:150px}.max-w-7xl{max-width:80rem}.max-w-md{max-width:28rem}.max-w-xl{max-width:36rem}.flex-1{flex:1 1 0%}.border-collapse{border-collapse:collapse}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes spin{to{transform:rotate(1turn)}}.animate-spin{animation:spin 1s linear infinite}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.resize{resize:both}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-wrap{flex-wrap:wrap}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-x-3{-moz-column-gap:.75rem;column-gap:.75rem}.gap-x-6{-moz-column-gap:1.5rem;column-gap:1.5rem}.gap-y-1{row-gap:.25rem}.gap-y-2{row-gap:.5rem}.space-y-5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem*var(--tw-space-y-reverse))}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-4{border-width:4px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-b-4{border-bottom-width:4px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138/var(--tw-border-opacity,1))}.border-amber-300{--tw-border-opacity:1;border-color:rgb(252 211 77/var(--tw-border-opacity,1))}.border-blue-100{--tw-border-opacity:1;border-color:rgb(219 234 254/var(--tw-border-opacity,1))}.border-blue-500{--tw-border-opacity:1;border-color:rgb(59 130 246/var(--tw-border-opacity,1))}.border-emerald-300{--tw-border-opacity:1;border-color:rgb(110 231 183/var(--tw-border-opacity,1))}.border-red-200{--tw-border-opacity:1;border-color:rgb(254 202 202/var(--tw-border-opacity,1))}.border-red-300{--tw-border-opacity:1;border-color:rgb(252 165 165/var(--tw-border-opacity,1))}.border-red-500{--tw-border-opacity:1;border-color:rgb(239 68 68/var(--tw-border-opacity,1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249/var(--tw-border-opacity,1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240/var(--tw-border-opacity,1))}.border-slate-200\/80{border-color:rgba(226,232,240,.8)}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225/var(--tw-border-opacity,1))}.border-teal-100{--tw-border-opacity:1;border-color:rgb(204 251 241/var(--tw-border-opacity,1))}.border-teal-500{--tw-border-opacity:1;border-color:rgb(20 184 166/var(--tw-border-opacity,1))}.border-transparent{border-color:transparent}.border-t-teal-600{--tw-border-opacity:1;border-top-color:rgb(13 148 136/var(--tw-border-opacity,1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235/var(--tw-bg-opacity,1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235/var(--tw-bg-opacity,1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245/var(--tw-bg-opacity,1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229/var(--tw-bg-opacity,1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242/var(--tw-bg-opacity,1))}.bg-red-600{--tw-bg-opacity:1;background-color:rgb(220 38 38/var(--tw-bg-opacity,1))}.bg-rose-600{--tw-bg-opacity:1;background-color:rgb(225 29 72/var(--tw-bg-opacity,1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252/var(--tw-bg-opacity,1))}.bg-teal-600{--tw-bg-opacity:1;background-color:rgb(13 148 136/var(--tw-bg-opacity,1))}.bg-transparent{background-color:transparent}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.p-1{padding:.25rem}.p-1\.5{padding:.375rem}.p-2{padding:.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-2{padding-bottom:.5rem}.pr-10{padding-right:2.5rem}.pt-0{padding-top:0}.pt-3{padding-top:.75rem}.pt-4{padding-top:1rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.italic{font-style:italic}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6/var(--tw-text-opacity,1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9/var(--tw-text-opacity,1))}.text-amber-800{--tw-text-opacity:1;color:rgb(146 64 14/var(--tw-text-opacity,1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}.text-blue-700{--tw-text-opacity:1;color:rgb(29 78 216/var(--tw-text-opacity,1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105/var(--tw-text-opacity,1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70/var(--tw-text-opacity,1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38/var(--tw-text-opacity,1))}.text-red-700{--tw-text-opacity:1;color:rgb(185 28 28/var(--tw-text-opacity,1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27/var(--tw-text-opacity,1))}.text-rose-600{--tw-text-opacity:1;color:rgb(225 29 72/var(--tw-text-opacity,1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184/var(--tw-text-opacity,1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139/var(--tw-text-opacity,1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105/var(--tw-text-opacity,1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85/var(--tw-text-opacity,1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59/var(--tw-text-opacity,1))}.text-teal-700{--tw-text-opacity:1;color:rgb(15 118 110/var(--tw-text-opacity,1))}.text-teal-900{--tw-text-opacity:1;color:rgb(19 78 74/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-60{opacity:.6}.shadow-\[0_4px_14px_rgba\(13\2c 148\2c 136\2c 0\.4\)\]{--tw-shadow:0 4px 14px rgba(13,148,136,.4);--tw-shadow-colored:0 4px 14px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-\[0_4px_14px_rgba\(37\2c 99\2c 235\2c 0\.4\)\]{--tw-shadow:0 4px 14px rgba(37,99,235,.4);--tw-shadow-colored:0 4px 14px var(--tw-shadow-color)}.shadow-\[0_4px_14px_rgba\(37\2c 99\2c 235\2c 0\.4\)\],.shadow-inner{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgba(0,0,0,.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-lg,.shadow-md{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.shadow-sm,.shadow-xl{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color)}.outline{outline-style:solid}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-200{transition-duration:.2s}.duration-300{transition-duration:.3s}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216/var(--tw-bg-opacity,1))}.hover\:bg-indigo-700:hover{--tw-bg-opacity:1;background-color:rgb(67 56 202/var(--tw-bg-opacity,1))}.hover\:bg-red-700:hover{--tw-bg-opacity:1;background-color:rgb(185 28 28/var(--tw-bg-opacity,1))}.hover\:bg-rose-700:hover{--tw-bg-opacity:1;background-color:rgb(190 18 60/var(--tw-bg-opacity,1))}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.hover\:bg-slate-200\/50:hover{background-color:rgba(226,232,240,.5)}.hover\:bg-slate-300:hover{--tw-bg-opacity:1;background-color:rgb(203 213 225/var(--tw-bg-opacity,1))}.hover\:bg-slate-50:hover{--tw-bg-opacity:1;background-color:rgb(248 250 252/var(--tw-bg-opacity,1))}.hover\:bg-teal-700:hover{--tw-bg-opacity:1;background-color:rgb(15 118 110/var(--tw-bg-opacity,1))}.hover\:text-slate-700:hover{--tw-text-opacity:1;color:rgb(51 65 85/var(--tw-text-opacity,1))}.hover\:opacity-100:hover{opacity:1}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.disabled\:opacity-50:disabled{opacity:.5}@media (min-width:640px){.sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\:py-4{padding-top:1rem;padding-bottom:1rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}}@media (min-width:768px){.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\:p-6{padding:1.5rem}.md\:p-8{padding:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-base{font-size:1rem;line-height:1.5rem}}@media (min-width:1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
     </style>
 </head>
 <body class="p-2 md:p-6">
@@ -363,11 +364,11 @@
         // โหมดตัวอย่าง (ข้อมูลสุ่ม) ใช้ได้เฉพาะเปิดไฟล์ในเครื่อง หรือใส่ ?demo ท้ายลิงก์ เท่านั้น
         // เปิดจากที่อื่น (เช่น GitHub Pages) จะแจ้งให้ใช้ลิงก์ Web App แทน ไม่แสดงข้อมูลปลอม
         const DEMO_MODE = !IS_APPS_SCRIPT && (location.protocol === 'file:' || /[?&]demo(=|&|$)/.test(location.search));
-        const COLOR_TEMP = '#0ea5e9';
-        const COLOR_HUM = '#14b8a6';
+        // สีกราฟใช้ความหมายเดียวกันทุกกราฟ: น้ำเงิน = อุณหภูมิ, ฟ้าเข้ม = ความชื้น, เขียว = ช่วงปกติ, แดง = นอกเกณฑ์
+        const COLOR_TEMP = '#2563eb';
+        const COLOR_HUM = '#0e7490';
         const COLOR_ALERT = '#ef4444';
         const COLOR_FALLBACK = '#334155';
-        const FRIDGE_PALETTE = ['#eab308', '#22c55e', '#0ea5e9', '#3b82f6', '#a855f7', '#f97316', '#ec4899', '#64748b'];
         const MAX_RANGE_DAYS = 400;
         // ความละเอียดของภาพใน PDF: scale สูง = คมแต่ไฟล์ใหญ่, quality = คุณภาพ JPEG (0–1)
         const PDF_RENDER = { scale: 1.5, type: 'jpeg', quality: 0.75 }; // ทดสอบแล้ว: ~60% เล็กลงจาก 2/0.95 โดยตัวอักษรยังคมชัด
@@ -489,11 +490,6 @@
             if (APP.fridges.some(f => f.name === name)) return 'fridge';
             return 'fridge';
         }
-        function fridgeColor(name) {
-            const i = APP.fridges.findIndex(f => f.name === name);
-            if (i < 0) return COLOR_FALLBACK;
-            return APP.fridges[i].color || FRIDGE_PALETTE[i % FRIDGE_PALETTE.length];
-        }
         function roomParent(room) {
             return (APP.roomParents && APP.roomParents[room]) || null;
         }
@@ -513,7 +509,7 @@
         }
         // ใช้ในเอกสารรายงาน: จุดที่เก็บเฉพาะเวลาราชการมีเครื่องหมาย † (อธิบายที่หัวรายงาน)
         function locLabelMark(name) {
-            return locLabel(name) + (isOfficeOnly(name) ? ' †' : '');
+            return locLabel(name) + (isOfficeOnly(name) ? ' †' : (skippedTimes(name).length ? ' ‡' : ''));
         }
         // ชื่อสำหรับใส่ในตาราง: ไม่ให้ตัดบรรทัดกลางวงเล็บ เช่น (OPD 7)
         function cellName(text) {
@@ -623,7 +619,7 @@
                     const id = `dash-${dashCards.length}`;
                     const card = document.createElement('div');
                     card.className = 'chart-container';
-                    card.innerHTML = `<div class="chart-canvas-wrap"><canvas id="${id}"></canvas></div><div id="${id}-info" class="mt-3 text-xs"></div>`;
+                    card.innerHTML = `${chartWrapsHtml(id, kind)}<div id="${id}-info" class="mt-3 text-xs"></div>`;
                     grid.appendChild(card);
                     dashCards.push({ name, kind, id });
                 });
@@ -786,10 +782,23 @@
             return null;
         }
         // จุดนี้ต้องบันทึกในวันที่และช่วงเวลานี้หรือไม่ (ใช้นับ "ขาดบันทึก")
+        // ช่วงเวลาที่จุดนี้ไม่ต้องบันทึกทุกวัน (คอลัมน์ "ไม่เก็บช่วงเวลา" ในชีตตั้งค่า)
+        function skippedTimes(loc) {
+            return (APP.skipTimes && APP.skipTimes[loc]) || [];
+        }
+        // ช่วงเวลานี้อยู่ในตารางของจุดนี้หรือไม่ (ไม่ดูวันที่)
+        function timeAllowed(loc, time) {
+            if (!APP.times.includes(time) || skippedTimes(loc).includes(time)) return false;
+            return !isOfficeOnly(loc) || (APP.officeTimes || []).includes(time);
+        }
         function isExpectedFor(loc, date, time) {
-            if (!APP.times.includes(time)) return false;
-            if (!isOfficeOnly(loc)) return true;
-            return (APP.officeTimes || []).includes(time) && !dayOff(date);
+            if (!timeAllowed(loc, time)) return false;
+            return !isOfficeOnly(loc) || !dayOff(date);
+        }
+        function scheduleText(loc) {
+            if (isOfficeOnly(loc)) return `เก็บข้อมูลเฉพาะวันทำการ ${officeTimesText()} น.`;
+            const sk = skippedTimes(loc);
+            return sk.length ? `ไม่เก็บข้อมูลช่วงเวลา ${sk.map(shortTime).join(', ')} น.` : '';
         }
         function officeTimesText() {
             return (APP.officeTimes || []).map(shortTime).join(', ');
@@ -885,79 +894,115 @@
             Object.keys(charts).filter(id => id.startsWith(prefix)).forEach(id => charts[id].resize());
         }
 
-        const COLOR_RANGE = '#16a34a';            // เส้นช่วงปกติอุณหภูมิ (เขียว)
-        const COLOR_RANGE_FILL = 'rgba(22, 163, 74, 0.08)';
+        const COLOR_RANGE = '#16a34a';               // เส้นช่วงปกติ (เขียว)
+        const COLOR_RANGE_FILL = 'rgba(22, 163, 74, 0.10)';
+
+        // ป้ายตัวเลขเกณฑ์ที่ปลายขวาของเส้นช่วงปกติ เช่น "สูงสุด 25 °C"
+        const rangeLabelPlugin = {
+            id: 'rangeLabels',
+            afterDatasetsDraw(chart) {
+                const { ctx, chartArea } = chart;
+                chart.data.datasets.forEach((ds, i) => {
+                    if (!ds.rangeText || !chart.isDatasetVisible(i)) return;
+                    const scale = chart.scales[ds.yAxisID];
+                    const y = scale.getPixelForValue(ds.rangeValue);
+                    if (y < chartArea.top - 1 || y > chartArea.bottom + 1) return;
+                    ctx.save();
+                    ctx.font = "600 11px 'Kanit', 'Leelawadee UI', 'Tahoma', sans-serif";
+                    const w = ctx.measureText(ds.rangeText).width + 8, h = 16;
+                    const x = chartArea.right - w - 2;
+                    const top = ds.rangeLabelBelow ? y + 3 : y - h - 3;
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                    ctx.fillRect(x, top, w, h);
+                    ctx.fillStyle = COLOR_RANGE;
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(ds.rangeText, x + 4, top + h / 2 + 0.5);
+                    ctx.restore();
+                });
+            }
+        };
 
         // เส้นเกณฑ์แนวนอน (ไม่มีจุด ไม่แสดงใน tooltip)
-        function rangeLine(label, value, n, yAxisID, color, extra = {}) {
+        function rangeLine(label, value, n, extra = {}) {
             return Object.assign({
-                label, data: Array(n).fill(value), yAxisID, isRange: true,
-                borderColor: color, backgroundColor: color, borderWidth: 1.5, borderDash: [6, 4],
-                pointRadius: 0, pointHoverRadius: 0, pointHitRadius: 0, fill: false, order: 10
+                label, data: Array(n).fill(value), yAxisID: 'y', isRange: true, rangeValue: value,
+                borderColor: COLOR_RANGE, backgroundColor: COLOR_RANGE, borderWidth: 1.5, borderDash: [6, 4],
+                pointRadius: 0, pointHoverRadius: 0, pointHitRadius: 0, pointStyle: 'line', fill: false, order: 10
             }, extra);
         }
 
-        function drawChart(id, name, kind, st, opts = {}) {
+        // กราฟ 1 ค่า (อุณหภูมิ หรือ ความชื้น) ของ 1 จุด
+        //   opts.metric = 'temp' | 'hum',  opts.loc = ชื่อจุด (ใช้ดูตารางเก็บข้อมูล)
+        function drawChart(id, title, kind, st, opts = {}) {
             destroyChart(id);
             const canvas = $(id);
             if (!canvas || typeof Chart === 'undefined') return;
-            const isRoom = kind === 'room';
+            const isHum = opts.metric === 'hum';
             const slots = st.slots;
             const n = slots.length;
-            const base = isRoom ? COLOR_TEMP : fridgeColor(name);
-            const temps = st.recs.map(r => (r && r.temp != null) ? r.temp : null);
             const T = APP.thresholds;
-            const [lo, hi] = isRoom ? [T.roomTempMin, T.roomTempMax] : [T.fridgeTempMin, T.fridgeTempMax];
+            const color = isHum ? COLOR_HUM : COLOR_TEMP;
+            const values = st.recs.map(r => {
+                const v = r ? (isHum ? r.humidity : r.temp) : null;
+                return v == null ? null : v;
+            });
+            const abn = v => isHum ? isHumAbn(kind, v) : isTempAbn(kind, v);
 
             const datasets = [{
-                label: 'อุณหภูมิ (°C)', data: temps, yAxisID: 'y',
-                borderColor: base, backgroundColor: base,
-                pointBackgroundColor: temps.map(v => isTempAbn(kind, v) ? COLOR_ALERT : base),
-                borderWidth: 2, pointBorderWidth: 0, pointRadius: 3, pointHoverRadius: 5, tension: 0.1, spanGaps: false, order: 0
+                label: isHum ? 'ความชื้น (%RH)' : 'อุณหภูมิ (°C)', data: values, yAxisID: 'y',
+                borderColor: color, backgroundColor: color, pointStyle: 'circle',
+                pointBackgroundColor: values.map(v => abn(v) ? COLOR_ALERT : color),
+                pointRadius: values.map(v => abn(v) ? 4 : 2.5), pointHoverRadius: 6, pointBorderWidth: 0,
+                borderWidth: 2, tension: 0.15, spanGaps: false, order: 0
             }];
-            const pad = isRoom ? 3 : 2;
-            const scales = {
-                x: { ticks: { maxRotation: 60, autoSkip: true, maxTicksLimit: 16 } },
-                // ให้แกนครอบช่วงปกติเสมอ เพื่อเห็นเส้นเกณฑ์แม้ค่าทั้งหมดอยู่ในเกณฑ์
-                y: { type: 'linear', position: 'left', title: { display: true, text: '°C' }, suggestedMin: lo - pad, suggestedMax: hi + pad }
-            };
-            if (isRoom) {
-                const hums = st.recs.map(r => (r && r.humidity != null) ? r.humidity : null);
-                datasets.push({
-                    label: 'ความชื้น (%)', data: hums, yAxisID: 'y1',
-                    borderColor: COLOR_HUM, backgroundColor: COLOR_HUM,
-                    pointBackgroundColor: hums.map(v => isHumAbn('room', v) ? COLOR_ALERT : COLOR_HUM),
-                    borderWidth: 2, pointBorderWidth: 0, pointRadius: 3, pointHoverRadius: 5, tension: 0.1, spanGaps: false, order: 0
-                });
-                scales.y1 = { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: '%RH' },
-                    suggestedMax: T.roomHumMax + 10 };
+            let subtitle, yScale;
+            if (isHum) {
+                const mx = T.roomHumMax;
+                subtitle = `ความชื้นสัมพัทธ์ (%RH) · ช่วงปกติไม่เกิน ${mx} %RH`;
+                // แถบช่วงปกติระบายจากล่างสุดของแกนถึงเส้นสูงสุด
+                datasets.push(rangeLine(`ช่วงปกติ ≤ ${mx} %RH`, mx, n, { fill: 'start', backgroundColor: COLOR_RANGE_FILL, rangeText: `สูงสุด ${mx} %RH` }));
+                yScale = { title: { display: true, text: '%RH' }, suggestedMin: Math.max(0, mx - 30), suggestedMax: mx + 10 };
+            } else {
+                const [lo, hi] = kind === 'room' ? [T.roomTempMin, T.roomTempMax] : [T.fridgeTempMin, T.fridgeTempMax];
+                const pad = kind === 'room' ? 3 : 2;
+                subtitle = `อุณหภูมิ (°C) · ช่วงปกติ ${lo}–${hi} °C`;
+                // เส้นต่ำสุดและสูงสุด + แถบสีระหว่างเส้น (fill: '-1' = ระบายถึงเส้นก่อนหน้า)
+                datasets.push(rangeLine(`ช่วงปกติ ${lo}–${hi} °C`, lo, n, { group: 'range', rangeText: `ต่ำสุด ${lo} °C`, rangeLabelBelow: true }));
+                datasets.push(rangeLine('', hi, n, { group: 'range', hideLegend: true, fill: '-1', backgroundColor: COLOR_RANGE_FILL, rangeText: `สูงสุด ${hi} °C` }));
+                yScale = { title: { display: true, text: '°C' }, suggestedMin: lo - pad, suggestedMax: hi + pad };
             }
-            // ช่วงปกติอุณหภูมิ: เส้นประต่ำสุด-สูงสุด + แถบสีจาง ๆ ระหว่างเส้น (fill: '-1' = ระบายถึงเส้นก่อนหน้า)
-            datasets.push(rangeLine(`ช่วงปกติ ${lo}–${hi} °C`, lo, n, 'y', COLOR_RANGE, { group: 'tRange' }));
-            datasets.push(rangeLine('', hi, n, 'y', COLOR_RANGE, { group: 'tRange', hideLegend: true, fill: '-1', backgroundColor: COLOR_RANGE_FILL }));
-            if (isRoom) {
-                datasets.push(rangeLine(`ความชื้นไม่เกิน ${T.roomHumMax} %RH`, T.roomHumMax, n, 'y1', COLOR_HUM, { group: 'hRange', borderDash: [2, 3] }));
-            }
+            // รายการ "นอกเกณฑ์" ใน legend เพื่ออธิบายจุดสีแดง (ไม่มีข้อมูลจริง)
+            datasets.push({ label: 'นอกเกณฑ์', data: Array(n).fill(null), legendOnly: true, pointStyle: 'circle',
+                borderColor: COLOR_ALERT, backgroundColor: COLOR_ALERT, order: 20 });
 
-            const title = name + (isOfficeOnly(opts.loc || name) ? ' (เฉพาะเวลาราชการ)' : '');
             charts[id] = new Chart(canvas.getContext('2d'), {
                 type: 'line',
                 data: { labels: slots.map(s => s.label), datasets },
+                plugins: [rangeLabelPlugin],
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     animation: opts.noAnimation ? false : undefined,
                     plugins: {
-                        title: { display: true, text: title, font: { size: 15, weight: '600' } },
+                        title: { display: true, text: title, font: { size: 15, weight: '600' }, padding: { top: 4, bottom: 2 } },
+                        subtitle: { display: true, text: subtitle, color: '#475569', font: { size: 12 }, padding: { bottom: 8 } },
                         legend: {
                             position: 'bottom',
-                            labels: { boxWidth: 12, filter: (item, data) => !data.datasets[item.datasetIndex].hideLegend },
-                            // กดที่ชื่อช่วงปกติ = ซ่อน/แสดงทั้งเส้นต่ำสุดและสูงสุดพร้อมกัน
+                            labels: { usePointStyle: true, boxWidth: 10, boxHeight: 10,
+                                filter: (item, data) => !data.datasets[item.datasetIndex].hideLegend,
+                                // ใช้สีของเส้นเสมอ (ค่าเริ่มต้นของ Chart.js ใช้สีจุดแรก ซึ่งอาจเป็นสีแดงของค่านอกเกณฑ์)
+                                generateLabels: (chart) => Chart.defaults.plugins.legend.labels.generateLabels(chart).map(item => {
+                                    const ds = chart.data.datasets[item.datasetIndex];
+                                    item.fillStyle = item.strokeStyle = ds.borderColor;
+                                    return item;
+                                }) },
+                            // กดที่ "ช่วงปกติ" = ซ่อน/แสดงเส้นต่ำสุดและสูงสุดพร้อมกัน, "นอกเกณฑ์" กดไม่ได้
                             onClick: (e, item, legend) => {
                                 const chart = legend.chart;
-                                const group = chart.data.datasets[item.datasetIndex].group;
-                                const idx = group
-                                    ? chart.data.datasets.map((d, i) => d.group === group ? i : -1).filter(i => i >= 0)
+                                const ds = chart.data.datasets[item.datasetIndex];
+                                if (ds.legendOnly) return;
+                                const idx = ds.group
+                                    ? chart.data.datasets.map((d, i) => d.group === ds.group ? i : -1).filter(i => i >= 0)
                                     : [item.datasetIndex];
                                 const show = !chart.isDatasetVisible(item.datasetIndex);
                                 idx.forEach(i => chart.setDatasetVisibility(i, show));
@@ -965,13 +1010,42 @@
                             }
                         },
                         tooltip: {
-                            filter: (item) => !item.dataset.isRange,
-                            callbacks: { title: (items) => { const s = slots[items[0].dataIndex]; return `${thaiDate(s.date)} ${s.time}`; } }
+                            filter: (item) => !item.dataset.isRange && !item.dataset.legendOnly,
+                            callbacks: {
+                                title: (items) => { const s = slots[items[0].dataIndex]; return `${thaiDate(s.date)} ${s.time}`; },
+                                label: (item) => {
+                                    const v = item.parsed.y;
+                                    return `${item.dataset.label}: ${fmt1(v)}${abn(v) ? ' (นอกเกณฑ์)' : ''}`;
+                                }
+                            }
                         }
                     },
-                    scales
+                    scales: {
+                        x: { ticks: { maxRotation: 60, autoSkip: true, maxTicksLimit: 14 } },
+                        y: Object.assign({ type: 'linear', position: 'left' }, yScale)
+                    }
                 }
             });
+        }
+
+        // ชื่อกราฟ = ชื่อจุด + ตารางเก็บข้อมูล (ถ้ามี)
+        function chartTitle(label, loc) {
+            if (isOfficeOnly(loc)) return `${label} (เฉพาะเวลาราชการ)`;
+            const sk = skippedTimes(loc);
+            return sk.length ? `${label} (ไม่เก็บ ${sk.map(shortTime).join(', ')} น.)` : label;
+        }
+        // วาดกราฟของ 1 จุด: ห้องยา = 2 กราฟ (อุณหภูมิ + ความชื้น), ตู้เย็น = กราฟอุณหภูมิ
+        function drawLocationCharts(id, label, loc, st, opts = {}) {
+            const kind = locKind(loc);
+            const title = chartTitle(label, loc);
+            drawChart(id, title, kind, st, Object.assign({}, opts, { metric: 'temp', loc }));
+            if (kind === 'room') drawChart(`${id}-h`, title, kind, st, Object.assign({}, opts, { metric: 'hum', loc }));
+        }
+        function chartWrapsHtml(id, kind) {
+            return kind === 'room'
+                ? `<div class="chart-canvas-wrap half"><canvas id="${id}"></canvas></div>
+                   <div class="chart-canvas-wrap half mt-3 pt-3 border-t border-slate-100"><canvas id="${id}-h"></canvas></div>`
+                : `<div class="chart-canvas-wrap"><canvas id="${id}"></canvas></div>`;
         }
 
         // =====================================
@@ -1020,7 +1094,7 @@
 
             dashCards.forEach(c => {
                 const st = computeLocation(c.name, c.kind, slots, index);
-                drawChart(c.id, c.name, c.kind, st);
+                drawLocationCharts(c.id, c.name, c.name, st);
                 renderCardInfo($(`${c.id}-info`), st, c.name);
                 totAbn += st.abnormal.length; totMiss += st.missing.length;
                 totExp += st.expected; totRec += st.recorded;
@@ -1049,8 +1123,9 @@
 
         function renderCardInfo(el, st, loc) {
             if (!el) return;
-            let html = isOfficeOnly(loc)
-                ? `<p class="text-slate-500 mb-1">เก็บข้อมูลเฉพาะวันทำการ ${escapeHtml(officeTimesText())} น. (ไม่นับวันหยุดและเวรนอกเวลาราชการ)</p>`
+            const sched = scheduleText(loc);
+            let html = sched
+                ? `<p class="text-slate-500 mb-1">${escapeHtml(sched)}${isOfficeOnly(loc) ? ' (ไม่นับวันหยุดและเวรนอกเวลาราชการ)' : ' (ไม่นับว่าขาด)'}</p>`
                 : '';
             html += `<div class="flex flex-wrap gap-x-3 gap-y-1 text-slate-600 mb-2">
                 <span>บันทึก <b>${st.recorded}/${st.expected}</b> ครั้ง</span>
@@ -1206,11 +1281,25 @@
         function reportHeaderHtml(ctx) {
             const scope = ctx.target === 'all' ? `ทุกห้องยา (${ctx.groups.length} ห้อง)` : ctx.target;
             const times = APP.times.map(shortTime).join(', ');
-            const hasOffice = ctx.groups.some(g => g.locations.some(isOfficeOnly));
-            const officeNote = hasOffice
+            const hasOffice = ctx.groups.some(g => g.locations.some(l => isOfficeOnly(l)));
+            let officeNote = hasOffice
                 ? `<br>จุดที่มีเครื่องหมาย † บันทึกเฉพาะวันทำการ วันละ ${(APP.officeTimes || []).length} ครั้ง (${escapeHtml(officeTimesText())} น.) ` +
                   'ไม่รวมวันเสาร์-อาทิตย์และวันหยุดราชการ'
                 : '';
+            // จุดที่ไม่เก็บบางช่วงเวลา (‡) จัดกลุ่มตามชุดเวลาที่ไม่เก็บ
+            const skipSets = new Map();
+            ctx.groups.flatMap(g => g.locations).filter(l => !isOfficeOnly(l) && skippedTimes(l).length).forEach(l => {
+                const key = skippedTimes(l).map(shortTime).join(', ');
+                skipSets.set(key, (skipSets.get(key) || []).concat(l));
+            });
+            if (skipSets.size === 1) {
+                const [key] = skipSets.keys();
+                const n = APP.times.length - key.split(', ').length; // จำนวนครั้งต่อวัน = เวรทั้งหมด − เวรที่ไม่เก็บ
+                officeNote += `<br>จุดที่มีเครื่องหมาย ‡ บันทึกทุกวัน วันละ ${n} ครั้ง ไม่บันทึกช่วงเวลา ${escapeHtml(key)} น.`;
+            } else if (skipSets.size > 1) {
+                officeNote += '<br>จุดที่มีเครื่องหมาย ‡ ไม่บันทึกบางช่วงเวลา: ' + [...skipSets].map(([key, locs]) =>
+                    `${locs.map(l => escapeHtml(locLabel(l))).join(', ')} (${escapeHtml(key)} น.)`).join('; ');
+            }
             return `
                 <div class="rpt-header">
                     <div class="rpt-title">รายงานผลการบันทึกอุณหภูมิและความชื้นสัมพัทธ์</div>
@@ -1350,9 +1439,7 @@
                 const kind = locKind(loc), isRoom = kind === 'room', st = ctx.statOf(loc);
                 const office = isOfficeOnly(loc);
                 const hasData = (d, t) => ctx.index.has(`${loc}|${d}|${t}`);
-                const times = office
-                    ? APP.times.filter(t => (APP.officeTimes || []).includes(t) || dates.some(d => hasData(d, t)))
-                    : APP.times;
+                const times = APP.times.filter(t => timeAllowed(loc, t) || dates.some(d => hasData(d, t)));
                 const span = times.length * (isRoom ? 2 : 1);
                 const cell = (v, abn) => v == null ? '<span class="rpt-muted">–</span>' : (abn ? `<span class="rpt-abn">${fmt1(v)}*</span>` : fmt1(v));
                 const head = isRoom
@@ -1379,7 +1466,7 @@
                     <div class="rpt-dept">${gi + 1}.${li + 1} ${escapeHtml(locLabelMark(loc))}</div>
                     <p class="rpt-note" style="margin:-4px 0 6px">${escapeHtml(g.dept)} · เกณฑ์ ${critFull(kind)} ·
                         บันทึก ${st.recorded} / ${st.expected} ครั้ง · นอกเกณฑ์ ${st.abnormal.length} ครั้ง
-                        ${office ? `<br>† บันทึกเฉพาะวันทำการ (${escapeHtml(officeTimesText())} น.)` : ''}</p>
+                        ${scheduleText(loc) ? `<br>${office ? '†' : '‡'} ${escapeHtml(scheduleText(loc))}` : ''}</p>
                     <div class="rpt-scroll"><table class="rpt daily"><thead>${head}</thead><tbody>${body}</tbody></table></div>
                     <p class="rpt-note">* ค่านอกเกณฑ์มาตรฐาน &nbsp;&nbsp; – ไม่มีการบันทึก &nbsp;&nbsp; ช่องว่าง = ไม่ต้องบันทึกหรือยังไม่ถึงเวลาบันทึก${office ? ' &nbsp;&nbsp; แถวสีเทา = วันหยุด' : ''}</p>`);
             }));
@@ -1398,13 +1485,11 @@
             }
             const ctx = reportContext();
             ctx.groups.flatMap(g => g.locations).forEach((loc, idx) => {
-                const wrap = document.createElement('div');
-                wrap.className = 'chart-canvas-wrap';
-                const canvas = document.createElement('canvas');
-                canvas.id = `rep-${idx}`;
-                wrap.appendChild(canvas);
-                container.appendChild(wrap);
-                drawChart(canvas.id, locLabel(loc), locKind(loc), ctx.statOf(loc), { noAnimation: true, loc });
+                const box = document.createElement('div');
+                box.className = 'chart-container';
+                box.innerHTML = chartWrapsHtml(`rep-${idx}`, locKind(loc));
+                container.appendChild(box);
+                drawLocationCharts(`rep-${idx}`, locLabel(loc), loc, ctx.statOf(loc), { noAnimation: true });
             });
         }
 
@@ -1491,6 +1576,7 @@
                 roomParents: { 'Sub-Stock OPD 5/1': 'ห้องยา 5/1 (OPD 5/1)', 'Sub-Stock OPD 7': 'ห้องยานอกเบอร์ 7 (OPD 7)' },
                 officeLocations: ['ห้องยานอกเบอร์ 7 (OPD 7)', 'Sub-Stock OPD 7', 'ห้องยา Premium 5/2 (OPD P.5/2)', 'OPD 7 - Hitachi', 'OPD 7 - Samsung', 'OPD P.5/2 - No. 1'],
                 officeTimes: ['09.00 น. (เวรเช้า)', '15.00 น. (เวรเช้า)'],
+                skipTimes: { 'ห้องยาในเบอร์ 7 (IPD 7)': ['00.30 น. (เวรดึก)'], 'IPD 1 - Toshiba': ['00.30 น. (เวรดึก)'], 'IPD 2 - Mitsubishi': ['00.30 น. (เวรดึก)'] },
                 holidays: [{ date: '2026-10-13', name: 'วันนวมินทรมหาราช' }, { date: '2026-10-23', name: 'วันปิยมหาราช' },
                            { date: '2026-12-07', name: 'วันหยุดชดเชยวันพ่อแห่งชาติ' }, { date: '2026-12-10', name: 'วันรัฐธรรมนูญ' }],
                 fridges: [
@@ -1512,7 +1598,8 @@
             const startD = new Date(); startD.setDate(startD.getDate() - 45);
             // ข้อมูลตัวอย่างทำตามตารางเก็บข้อมูลจริง: จุดเวลาราชการไม่มีข้อมูลวันหยุด/เวรนอกเวลา
             const offDay = d => { const w = new Date(isoToUtc(d)).getUTCDay(); return w === 0 || w === 6 || cfg.holidays.some(h => h.date === d); };
-            const skip = (loc, d, t) => cfg.officeLocations.includes(loc) && (!cfg.officeTimes.includes(t) || offDay(d));
+            const skip = (loc, d, t) => (cfg.skipTimes[loc] || []).includes(t) ||
+                (cfg.officeLocations.includes(loc) && (!cfg.officeTimes.includes(t) || offDay(d)));
             eachDate(getLocalISODate(startD), today).forEach(date => {
                 cfg.times.forEach(time => {
                     if (slotDueTime(date, time) > new Date()) return;

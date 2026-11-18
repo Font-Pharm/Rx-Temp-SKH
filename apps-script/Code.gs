@@ -9,7 +9,7 @@
  * ฟังก์ชันที่ชื่อลงท้ายด้วย _ เป็นฟังก์ชันภายใน หน้าเว็บเรียกตรงไม่ได้
  *
  * ชีต "ตั้งค่า" (ระบบสร้างให้อัตโนมัติเมื่อเปิดใช้งานครั้งแรก พร้อมค่าปัจจุบันทั้งหมด)
- *   คอลัมน์: ประเภท | ชื่อ | รายละเอียด | สีกราฟ | ใช้งาน | เวลาราชการ
+ *   คอลัมน์: ประเภท | ชื่อ | รายละเอียด | สีกราฟ | ใช้งาน | เวลาราชการ | ไม่เก็บช่วงเวลา
  *   - ห้องยา    : ชื่อ = ชื่อห้องยา, รายละเอียด = ห้องยาหลักที่สังกัด (ใส่เฉพาะจุดย่อย เช่น Sub-Stock)
  *                 เว้นว่าง = เป็นห้องยาหลัก (1 กลุ่มในหน้ารายงาน)
  *   - ตู้เย็น    : ชื่อ = ชื่อตู้เย็น, รายละเอียด = ห้องยาที่ตู้นี้สังกัด, สีกราฟ = รหัสสี เช่น #3b82f6
@@ -21,6 +21,8 @@
  *     - แถวห้องยา/ตู้เย็น = จุดนี้เก็บข้อมูลเฉพาะวันทำการ (จ.-ศ. ที่ไม่ใช่วันหยุด) และเฉพาะช่วงเวลาที่ติ๊กไว้
  *     - แถวช่วงเวลา      = ช่วงเวลานี้อยู่ในเวลาราชการ
  *     จุดที่เก็บเฉพาะเวลาราชการยังบันทึกนอกเวลาได้ แต่ถ้าไม่บันทึก ระบบจะไม่นับว่าขาด
+ *   คอลัมน์ "ไม่เก็บช่วงเวลา" (แถวห้องยา/ตู้เย็น): ช่วงเวลาที่จุดนี้ไม่ต้องบันทึก (ทุกวัน)
+ *     พิมพ์เวลาคั่นด้วยจุลภาค เช่น "00.30" หรือ "00.30, 20.00" — ยังบันทึกได้ แต่ไม่นับว่าขาด
  *   เอาเครื่องหมายช่อง "ใช้งาน" ออกเพื่อปิดรายการโดยไม่ต้องลบแถว
  *   ข้อควรระวัง: ห้ามเปลี่ยนชื่อห้องยา/ตู้เย็น/ช่วงเวลาที่มีข้อมูลเก่าแล้ว เพราะระบบจับคู่ข้อมูลด้วยชื่อ
  *
@@ -42,8 +44,8 @@ const DATA_HEADERS = ["Timestamp", "ประเภทแบบฟอร์ม",
 const DATA_KEYS = ["timestamp", "formType", "date", "time", "location", "temp", "humidity", "staff"];
 const FORM_TYPE_LABEL = { room: "ห้องยา", fridge: "ตู้เย็น" };
 
-const CONFIG_HEADERS = ["ประเภท", "ชื่อ", "รายละเอียด", "สีกราฟ", "ใช้งาน", "เวลาราชการ"];
-const COL_ACTIVE = 5, COL_OFFICE = 6; // ลำดับคอลัมน์ (เริ่มที่ 1)
+const CONFIG_HEADERS = ["ประเภท", "ชื่อ", "รายละเอียด", "สีกราฟ", "ใช้งาน", "เวลาราชการ", "ไม่เก็บช่วงเวลา"];
+const COL_ACTIVE = 5, COL_OFFICE = 6, COL_SKIP = 7; // ลำดับคอลัมน์ (เริ่มที่ 1)
 const CONFIG_TYPE = { ROOM: "ห้องยา", FRIDGE: "ตู้เย็น", TIME: "ช่วงเวลา", STAFF: "ผู้บันทึก", THRESHOLD: "เกณฑ์", HOLIDAY: "วันหยุด" };
 const THRESHOLD_LABELS = {
   roomTempMin: "ห้องยา อุณหภูมิต่ำสุด (°C)",
@@ -59,7 +61,7 @@ const MAX_RANGE_DAYS = 400;
 const LOCK_WAIT_MS = 15000;
 
 // เวอร์ชันของชีตตั้งค่า ใช้อัปเกรดชีตเดิมอัตโนมัติครั้งเดียว (ดู migrateConfig_)
-const CONFIG_VERSION = 3;
+const CONFIG_VERSION = 4;
 const CONFIG_VERSION_KEY = "CONFIG_VERSION";
 const PREMIUM_ROOM = "ห้องยา Premium 5/2 (OPD P.5/2)";
 const PREMIUM_FRIDGE = "OPD P.5/2 - No. 1";
@@ -74,6 +76,13 @@ const DEFAULT_OFFICE_LOCATIONS = [
   "OPD 7 - Hitachi", "OPD 7 - Samsung", PREMIUM_FRIDGE
 ];
 const DEFAULT_OFFICE_TIMES = ["09.00 น. (เวรเช้า)", "15.00 น. (เวรเช้า)"];
+
+// v4: จุดที่เก็บทุกวันแต่ไม่เก็บบางช่วงเวลา (ห้องยาในเบอร์ 7 และตู้เย็นประจำห้อง ไม่เก็บเวรดึก)
+const DEFAULT_SKIP_TIMES = {
+  "ห้องยาในเบอร์ 7 (IPD 7)": "00.30",
+  "IPD 1 - Toshiba": "00.30",
+  "IPD 2 - Mitsubishi": "00.30"
+};
 
 // วันหยุดราชการที่ไม่ใช่เสาร์-อาทิตย์ (เสาร์-อาทิตย์ระบบรู้เอง) ปีงบประมาณ 2569–2570
 // แหล่งที่มา: ปฏิทินวันหยุด InfoQuest (2569), ประกาศธนาคารแห่งประเทศไทย ฉบับที่ 37/2569 (2570)
@@ -369,10 +378,11 @@ function readConfig_(ss) {
   const tz = sheet.getParent().getSpreadsheetTimeZone();
   const cfg = {
     rooms: [], roomParents: {}, fridges: [], times: [], staff: [],
-    officeLocations: [], officeTimes: [], holidays: [],
+    officeLocations: [], officeTimes: [], skipTimes: {}, holidays: [],
     thresholds: Object.assign({}, DEFAULT_CONFIG.thresholds)
   };
   const usedLocation = {}, usedTime = {}, usedStaff = {}, usedHoliday = {};
+  const skipRaw = {}; // ชื่อจุด -> ข้อความในคอลัมน์ "ไม่เก็บช่วงเวลา" (แปลงเป็นชื่อเวรหลังอ่านครบ)
 
   for (let i = 1; i < values.length; i++) {
     const row = values[i];
@@ -399,11 +409,13 @@ function readConfig_(ss) {
       cfg.rooms.push(name);
       if (detail && detail !== name) cfg.roomParents[name] = detail;
       if (office) cfg.officeLocations.push(name);
+      if (cleanText_(row[COL_SKIP - 1])) skipRaw[name] = cleanText_(row[COL_SKIP - 1]);
     } else if (type === CONFIG_TYPE.FRIDGE) {
       if (usedLocation[name]) continue;
       usedLocation[name] = true;
       cfg.fridges.push({ name: name, room: detail, color: validColor_(row[3]) });
       if (office) cfg.officeLocations.push(name);
+      if (cleanText_(row[COL_SKIP - 1])) skipRaw[name] = cleanText_(row[COL_SKIP - 1]);
     } else if (type === CONFIG_TYPE.TIME) {
       if (usedTime[name]) continue;
       usedTime[name] = true;
@@ -437,6 +449,10 @@ function readConfig_(ss) {
     cfg.officeTimes = DEFAULT_OFFICE_TIMES.slice();
   }
   cfg.holidays.sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+  Object.keys(skipRaw).forEach(function (loc) {
+    const list = resolveTimes_(skipRaw[loc], cfg.times);
+    if (list.length) cfg.skipTimes[loc] = list;
+  });
   if (!cfg.staff.length) cfg.staff = DEFAULT_CONFIG.staff.map(function (s) { return Object.assign({}, s); });
 
   const t = cfg.thresholds, d = DEFAULT_CONFIG.thresholds;
@@ -450,25 +466,25 @@ function initConfigSheet_(sheet) {
   const rows = [CONFIG_HEADERS];
   const officeRows = []; // แถวที่ต้องมี checkbox ในคอลัมน์ "เวลาราชการ"
   DEFAULT_CONFIG.rooms.forEach(function (n) {
-    rows.push([CONFIG_TYPE.ROOM, n, DEFAULT_CONFIG.roomParents[n] || "", "", true, office(n)]);
+    rows.push([CONFIG_TYPE.ROOM, n, DEFAULT_CONFIG.roomParents[n] || "", "", true, office(n), DEFAULT_SKIP_TIMES[n] || ""]);
     officeRows.push(rows.length);
   });
   DEFAULT_CONFIG.fridges.forEach(function (f) {
-    rows.push([CONFIG_TYPE.FRIDGE, f.name, f.room, f.color, true, office(f.name)]);
+    rows.push([CONFIG_TYPE.FRIDGE, f.name, f.room, f.color, true, office(f.name), DEFAULT_SKIP_TIMES[f.name] || ""]);
     officeRows.push(rows.length);
   });
   DEFAULT_CONFIG.times.forEach(function (n) {
-    rows.push([CONFIG_TYPE.TIME, n, "", "", true, DEFAULT_OFFICE_TIMES.indexOf(n) >= 0]);
+    rows.push([CONFIG_TYPE.TIME, n, "", "", true, DEFAULT_OFFICE_TIMES.indexOf(n) >= 0, ""]);
     officeRows.push(rows.length);
   });
-  DEFAULT_CONFIG.staff.forEach(function (s) { rows.push([CONFIG_TYPE.STAFF, s.name, s.group, "", true, ""]); });
+  DEFAULT_CONFIG.staff.forEach(function (s) { rows.push([CONFIG_TYPE.STAFF, s.name, s.group, "", true, "", ""]); });
   Object.keys(THRESHOLD_LABELS).forEach(function (k) {
-    rows.push([CONFIG_TYPE.THRESHOLD, THRESHOLD_LABELS[k], DEFAULT_CONFIG.thresholds[k], "", true, ""]);
+    rows.push([CONFIG_TYPE.THRESHOLD, THRESHOLD_LABELS[k], DEFAULT_CONFIG.thresholds[k], "", true, "", ""]);
   });
   const tz = sheet.getParent().getSpreadsheetTimeZone();
   const holidayStart = rows.length + 1;
   DEFAULT_HOLIDAYS.forEach(function (h) {
-    rows.push([CONFIG_TYPE.HOLIDAY, Utilities.parseDate(h[0], tz, "yyyy-MM-dd"), h[1], "", true, ""]);
+    rows.push([CONFIG_TYPE.HOLIDAY, Utilities.parseDate(h[0], tz, "yyyy-MM-dd"), h[1], "", true, "", ""]);
   });
 
   // ต้องใส่ checkbox ก่อน เพราะ insertCheckboxes จะตั้งค่าทุกช่องเป็น false
@@ -486,6 +502,7 @@ function initConfigSheet_(sheet) {
   sheet.setColumnWidth(4, 90);
   sheet.setColumnWidth(5, 70);
   sheet.setColumnWidth(6, 90);
+  sheet.setColumnWidth(7, 120);
   sheet.getRange(1, 1).setNote(CONFIG_NOTE);
   PropertiesService.getScriptProperties().setProperty(CONFIG_VERSION_KEY, String(CONFIG_VERSION));
 }
@@ -498,6 +515,7 @@ const CONFIG_NOTE =
   "เกณฑ์: ห้ามแก้ข้อความช่องชื่อ แก้ได้เฉพาะตัวเลขในช่องรายละเอียด\n" +
   "วันหยุด: ช่องชื่อ = วันที่ (เฉพาะวันหยุดราชการที่ไม่ใช่เสาร์-อาทิตย์), ช่องรายละเอียด = ชื่อวันหยุด\n" +
   "เวลาราชการ (คอลัมน์ F): ติ๊กที่ห้องยา/ตู้เย็น = เก็บข้อมูลเฉพาะวันทำการ ในช่วงเวลาที่ติ๊กไว้; ติ๊กที่ช่วงเวลา = ช่วงเวลานั้นอยู่ในเวลาราชการ\n" +
+  "ไม่เก็บช่วงเวลา (คอลัมน์ G): ช่วงเวลาที่ห้องยา/ตู้เย็นนี้ไม่ต้องบันทึกทุกวัน เช่น 00.30 (หลายเวลาคั่นด้วยจุลภาค)\n" +
   "ปิดรายการ: เอาเครื่องหมายช่อง ใช้งาน ออก (ไม่ต้องลบแถว)\n" +
   "ห้ามเปลี่ยนชื่อห้อง/ตู้/ช่วงเวลาที่มีข้อมูลเก่าแล้ว\n" +
   "เปลี่ยนแล้วให้กดรีเฟรชหน้าเว็บ";
@@ -506,6 +524,7 @@ const CONFIG_NOTE =
  * อัปเกรดชีตตั้งค่าที่สร้างจากเวอร์ชันก่อน (ทำทีละขั้นครั้งเดียว แล้วจำไว้ใน Script Properties)
  * v2: เพิ่มห้องยา Premium 5/2 + ตู้เย็น No. 1 และผูก Sub-Stock เข้ากับห้องยาหลัก
  * v3: เพิ่มคอลัมน์ "เวลาราชการ" + ติ๊กจุดที่เก็บเฉพาะเวลาราชการ + รายการวันหยุดราชการ
+ * v4: เพิ่มคอลัมน์ "ไม่เก็บช่วงเวลา" + ห้องยาในเบอร์ 7 และตู้เย็น IPD 1, IPD 2 ไม่เก็บเวร 00.30
  * ไม่แตะแถวที่ผู้ใช้แก้ไว้แล้ว และไม่เพิ่มซ้ำถ้ามีชื่อ/วันที่นั้นอยู่แล้ว (แม้ปิดใช้งาน)
  */
 function migrateConfig_(sheet) {
@@ -518,6 +537,7 @@ function migrateConfig_(sheet) {
   try {
     if (current() < 2) { migrateConfigV2_(sheet); props.setProperty(CONFIG_VERSION_KEY, "2"); }
     if (current() < 3) { migrateConfigV3_(sheet); props.setProperty(CONFIG_VERSION_KEY, "3"); }
+    if (current() < 4) { migrateConfigV4_(sheet); props.setProperty(CONFIG_VERSION_KEY, "4"); }
     sheet.getRange(1, 1).setNote(CONFIG_NOTE);
     SpreadsheetApp.flush();
   } finally {
@@ -591,6 +611,19 @@ function migrateConfigV3_(sheet) {
   });
   const start = appendConfigRows_(sheet, add);
   if (start) sheet.getRange(start, 2, add.length, 1).setNumberFormat("yyyy-mm-dd");
+}
+
+function migrateConfigV4_(sheet) {
+  sheet.getRange(1, COL_SKIP).setValue(CONFIG_HEADERS[COL_SKIP - 1]).setFontWeight("bold").setBackground("#f3f4f6");
+  sheet.setColumnWidth(COL_SKIP, 120);
+  const values = sheet.getDataRange().getValues();
+  for (let i = 1; i < values.length; i++) {
+    const type = cleanText_(values[i][0]);
+    if (type !== CONFIG_TYPE.ROOM && type !== CONFIG_TYPE.FRIDGE) continue;
+    const name = cleanText_(values[i][1]);
+    const current = values[i].length >= COL_SKIP ? cleanText_(values[i][COL_SKIP - 1]) : "";
+    if (DEFAULT_SKIP_TIMES[name] && !current) sheet.getRange(i + 1, COL_SKIP).setValue(DEFAULT_SKIP_TIMES[name]);
+  }
 }
 
 function initDataSheet_(sheet) {
@@ -804,6 +837,19 @@ function isActive_(v) {
   if (v === false) return false;
   const s = cleanText_(v).toUpperCase();
   return ["FALSE", "NO", "N", "0", "ไม่", "ไม่ใช้งาน", "ปิด"].indexOf(s) < 0;
+}
+
+/**
+ * แปลงข้อความ เช่น "00.30" หรือ "00.30, 20.00 น." เป็นชื่อช่วงเวลาเต็มในชีตตั้งค่า
+ * เทียบด้วยเวลา (ชั่วโมง.นาที) จึงพิมพ์ "0.30", "00:30" หรือชื่อเต็มก็ได้
+ */
+function resolveTimes_(text, times) {
+  const key = function (t) {
+    const m = cleanText_(t).match(/^(\d{1,2})[.:](\d{2})/);
+    return m ? Number(m[1]) + "." + m[2] : cleanText_(t);
+  };
+  const wanted = String(text).split(/[,;\n]+/).map(key).filter(String);
+  return times.filter(function (t) { return wanted.indexOf(key(t)) >= 0; });
 }
 
 /** ช่อง checkbox ที่ติ๊กแล้ว (รองรับกรณีพิมพ์ข้อความแทน checkbox) */
